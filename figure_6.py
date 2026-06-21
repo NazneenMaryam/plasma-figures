@@ -1,7 +1,7 @@
 from pathlib import Path
 
 try:
-    import matplotlib.pyplot as plt  # type: ignore[import] 
+    import matplotlib.pyplot as plt 
 except ImportError as err:
     raise ImportError(
         "matplotlib is required to run this script. Install it with "

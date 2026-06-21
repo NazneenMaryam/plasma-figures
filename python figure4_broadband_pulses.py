@@ -1,7 +1,7 @@
 from pathlib import Path
 
 try:
-    import matplotlib.pyplot as plt  # type: ignore[reportMissingModuleSource]
+    import matplotlib.pyplot as plt 
 except ImportError as exc:
     raise ImportError(
         "matplotlib is required to run this script. "
@@ -9,41 +9,41 @@ except ImportError as exc:
     ) from exc
 
 try:
-    import numpy as np  # type: ignore[reportMissingModuleSource]
+    import numpy as np 
 except ImportError as exc:
     raise ImportError(
         "numpy is required to run this script. "
         "Install it with `pip install numpy`."
     ) from exc
 
-# Make the random phases reproducible
+
 np.random.seed(10)
 
-# Time axis
+
 time = np.linspace(0, 10, 5000)
 
-# Broadband laser parameters
+
 number_of_components = 40
 central_frequency = 2 * np.pi * 20
 relative_bandwidth = 0.08
 
 total_bandwidth = relative_bandwidth * central_frequency
 
-# Frequency components around the central frequency
+
 frequencies = central_frequency + np.linspace(
     -total_bandwidth / 2,
     total_bandwidth / 2,
     number_of_components
 )
 
-# Random phase for each frequency component
+
 phases = np.random.uniform(
     0,
     2 * np.pi,
     number_of_components
 )
 
-# Calculate the total electric field
+
 electric_field = np.zeros_like(time)
 
 for frequency, phase in zip(frequencies, phases):
@@ -52,16 +52,16 @@ for frequency, phase in zip(frequencies, phases):
         / np.sqrt(number_of_components)
     )
 
-# Laser intensity is proportional to the square of the electric field
+
 broadband_intensity = electric_field**2
 
-# Normalize the average broadband intensity to 1
+
 broadband_intensity /= np.mean(broadband_intensity)
 
-# Constant narrowband reference intensity
+
 narrowband_intensity = np.ones_like(time)
 
-# Create the graph
+
 fig, ax = plt.subplots(figsize=(9, 5))
 
 ax.plot(
@@ -81,7 +81,7 @@ ax.grid(alpha=0.3)
 
 fig.tight_layout()
 
-# Save the image in the same folder as this Python file
+
 code_folder = Path(__file__).resolve().parent
 output_file = code_folder / "figure5_broadband_pulses.png"
 

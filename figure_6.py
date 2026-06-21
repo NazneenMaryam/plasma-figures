@@ -8,7 +8,6 @@ except ImportError as err:
         "'pip install matplotlib'."
     ) from err
 
-# Maximum SRS/driving-pulse field ratios reported by Guo et al.
 case_names = [
     "Narrowband\nLG pulse",
     "Broadband\nLG pulse",
@@ -23,7 +22,6 @@ srs_field_ratio = [
     0.05
 ]
 
-# Different color for each bar
 bar_colors = [
     "steelblue",
     "darkorange",
@@ -31,8 +29,6 @@ bar_colors = [
     "crimson"
 ]
 
-
-# Create the graph
 fig, ax = plt.subplots(figsize=(9, 5.5))
 
 bars = ax.bar(
@@ -42,8 +38,6 @@ bars = ax.bar(
     color=bar_colors
 )
 
-
-# Write the value above each bar
 for bar, value in zip(bars, srs_field_ratio):
     ax.text(
         bar.get_x() + bar.get_width() / 2,
@@ -54,8 +48,6 @@ for bar, value in zip(bars, srs_field_ratio):
         fontsize=10
     )
 
-
-# Axis labels and title
 ax.set_xlabel("Laser condition")
 ax.set_ylabel(
     "Maximum SRS / driving-pulse field ratio"
@@ -70,8 +62,6 @@ ax.grid(axis="y", alpha=0.3)
 
 fig.tight_layout()
 
-
-# Save the image in the same folder as this Python file
 code_folder = Path(__file__).resolve().parent
 
 output_file = (

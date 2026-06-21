@@ -1,4 +1,4 @@
-# Broadband Laser–Plasma Interaction Figures
+# Broadband Laser Plasma Interaction Figures
 
 
 

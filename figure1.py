@@ -14,16 +14,10 @@ except ImportError as exc:
     raise SystemExit(1) from exc
 
 
-# --------------------------------------------------
-# Time axis
-# --------------------------------------------------
+
 time = np.linspace(0, 8, 1000)
 
-
-# --------------------------------------------------
-# Monochromatic-laser case:
-# smooth SRS growth followed by saturation
-# --------------------------------------------------
+-
 monochromatic_srs = 1 / (
     1 + np.exp(-2.2 * (time - 3.2))
 )
@@ -34,11 +28,6 @@ monochromatic_srs = (
     / np.max(monochromatic_srs)
 )
 
-
-# --------------------------------------------------
-# Broadband-laser case:
-# weak background plus intermittent SRS bursts
-# --------------------------------------------------
 background = 0.035 * (
     1 - np.exp(-0.8 * time)
 )
@@ -73,9 +62,7 @@ broadband_srs = (
 )
 
 
-# --------------------------------------------------
-# Create the graph
-# --------------------------------------------------
+
 fig, ax = plt.subplots(figsize=(9, 5))
 
 ax.plot(
@@ -94,10 +81,6 @@ ax.plot(
     label="Broadband laser"
 )
 
-
-# --------------------------------------------------
-# Mark the strongest intermittent burst
-# --------------------------------------------------
 maximum_index = np.argmax(broadband_srs)
 
 maximum_time = time[maximum_index]
@@ -115,9 +98,7 @@ ax.annotate(
 )
 
 
-# --------------------------------------------------
-# Axis labels and title
-# --------------------------------------------------
+
 ax.set_xlabel("Time (arbitrary units)")
 ax.set_ylabel("Normalized SRS reflectivity")
 
@@ -134,9 +115,6 @@ ax.grid(alpha=0.3)
 fig.tight_layout()
 
 
-# --------------------------------------------------
-# Save the graph in the same folder as this file
-# --------------------------------------------------
 code_folder = Path(__file__).resolve().parent
 
 output_file = (

@@ -10,9 +10,6 @@ except ImportError as exc:
     ) from exc
 
 
-# --------------------------------------------------
-# Electron-density range used in the reviewed study
-# --------------------------------------------------
 electron_density = [
     0.12,
     0.14,
@@ -21,18 +18,6 @@ electron_density = [
     0.20
 ]
 
-
-# --------------------------------------------------
-# Qualitative normalized trends
-#
-# At lower density:
-# kinetic effects and hot-electron production
-# become more important.
-#
-# At higher density:
-# broadband suppression of fluid nonlinearities
-# becomes more effective.
-# --------------------------------------------------
 fluid_suppression = [
     0.12,
     0.28,
@@ -49,10 +34,6 @@ kinetic_hot_electron_risk = [
     0.15
 ]
 
-
-# --------------------------------------------------
-# Create the graph
-# --------------------------------------------------
 fig, ax = plt.subplots(figsize=(9, 5))
 
 ax.plot(
@@ -75,10 +56,6 @@ ax.plot(
     label="Kinetic hot-electron risk"
 )
 
-
-# --------------------------------------------------
-# Mark the approximate transition region
-# --------------------------------------------------
 ax.axvline(
     x=0.16,
     linestyle="--",
@@ -95,10 +72,6 @@ ax.text(
     fontsize=9
 )
 
-
-# --------------------------------------------------
-# Axis labels and title
-# --------------------------------------------------
 ax.set_xlabel(r"Electron density, $n_e/n_c$")
 ax.set_ylabel("Qualitative normalized level")
 
@@ -115,9 +88,6 @@ ax.grid(alpha=0.3)
 fig.tight_layout()
 
 
-# --------------------------------------------------
-# Save the graph in the same folder as this file
-# --------------------------------------------------
 code_folder = Path(__file__).resolve().parent
 
 output_file = (
